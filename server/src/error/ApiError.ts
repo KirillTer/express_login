@@ -1,13 +1,16 @@
 class ApiError extends Error{
-    status: any;
-    constructor(status, message) {
+    status: any
+    errors: any
+
+    constructor(status, message, errors = []) {
         super();
         this.status = status
         this.message = message
+        this.errors = errors
     }
 
-    static badRequest(message) {
-        return new ApiError(404, message)
+    static badRequest(message, errors?) {
+        return new ApiError(404, message, errors)
     }
 
     static internal(message) {

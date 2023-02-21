@@ -4,19 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev nodemon index.ts"
+    "build": "tsc",
+    "start:dev": "cross-env NODE_ENV=dev nodemon index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-fileupload": "^1.4.0",
+    "express-validator": "^6.15.0",
     "jsonwebtoken": "^9.0.0",
+    "mongodb": "^5.0.1",
+    "mongoose": "^6.9.2",
+    "nodemailer": "^6.9.1",
     "pg": "^8.9.0",
     "pg-hstore": "^2.3.4",
     "reflect-metadata": "^0.1.13",
@@ -32,6 +38,7 @@
     "nodemon": "^2.0.20",
     "sequelize-typescript": "^2.1.5",
     "ts-loader": "^9.2.3",
+    "ts-node": "^10.9.1",
     "tsconfig-paths": "4.1.0",
     "typescript": "^4.9.5"
   }
