@@ -36,11 +36,11 @@ class UserService {
   async login(email, password) {
     const candidate = await UserModel.findOne({email})
     if(!candidate) {
-      throw ApiError.badRequest(`User with email ${email} doesn't exist`)
+      throw ApiError.forbidden(`User with email ${email} doesn't exist`)
     }
     const isPasswordWquals = await bcrypt.compare(password, candidate.password)
     if(!isPasswordWquals) {
-      throw ApiError.badRequest(`Incorrect password`)
+      throw ApiError.forbidden(`Incorrect password`)
     }
     const userDto = new UserDto(candidate)
     const tokens = TokenService.generateTokens({...userDto})
@@ -60,8 +60,8 @@ class UserService {
     }
     const userData = await TokenService.validateRefreshToken(refreshToken)
     const tokenFromDB = await TokenService.findToken(refreshToken)
-    if(!userData && !tokenFromDB) {
-      throw ApiError.forbidden('Invalid token or user')
+    if(!userData || !tokenFromDB) {
+      throw ApiError.forbidden('Expired or invalid token, please login again')
     }
     const user = await UserModel.findById(userData.id)
     const userDto = new UserDto(user)

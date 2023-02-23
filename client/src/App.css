@@ -1,0 +1,64 @@
+.App {
+  width: 1000px;
+}
+
+.post__list {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+.user {
+  padding: 20px;
+  border: 1px solid orange;
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.h100 {
+  height: calc(100vh - 64px);
+}
+
+.postItem {
+  padding: 10px;
+  border: 2px solid teal;
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.postItem_header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.postAnimation {
+  margin: 20px;
+}
+
+.postAnimation-enter {
+  transform: translateX(-350px);
+}
+
+.postAnimation-enter-active {
+  transform: translateX(0px);
+  transition: all 500ms ease-in;
+}
+
+.postAnimation-exit {
+  opacity: 1;
+}
+
+.postAnimation-exit-active {
+  transform: translateX(-350px);
+  transition: all 500ms ease-in;
+}
