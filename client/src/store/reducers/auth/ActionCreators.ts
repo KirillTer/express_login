@@ -49,12 +49,13 @@ export default $api;
 // redux toolkit action creator
 export const registerUser = createAsyncThunk(
   'user/registerUser',
-  async (reqParams: any = {email: '', password: ''}, thunkAPI) => {
+  async (reqParams: any = {email: '', userName: '', password: ''}, thunkAPI) => {
     console.log('registerUser')
     try {
       const response = await $api.post<IAuthResponse>(
         '/registration', {
           email: reqParams.email,
+          userName: reqParams.userName,
           password: reqParams.password
         }
       );
