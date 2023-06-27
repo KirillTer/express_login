@@ -1,10 +1,10 @@
-import bcrypt from 'bcrypt'
-import { v4 as uuidv4 } from 'uuid'
-import UserModel from '../model/userModel'
+import ApiError from '../error/ApiError'
 import MailService from './MailService'
 import TokenService from './TokenService'
 import UserDto from '../dto/userDto'
-import ApiError from '../error/ApiError'
+import UserModel from '../model/userModel'
+import bcrypt from 'bcrypt'
+import { v4 as uuidv4 } from 'uuid'
 
 class UserService {
   async registration(email, userName, password) {
@@ -36,11 +36,11 @@ class UserService {
   async login(email, password) {
     const candidate = await UserModel.findOne({email})
     if(!candidate) {
-      throw ApiError.forbidden(`User with email ${email} doesn't exist`)
+      throw ApiError.badRequest(`User with email ${email} doesn't exist`)
     }
-    const isPasswordWquals = await bcrypt.compare(password, candidate.password)
-    if(!isPasswordWquals) {
-      throw ApiError.forbidden(`Incorrect password`)
+    const isPasswordEquals = await bcrypt.compare(password, candidate.password)
+    if(!isPasswordEquals) {
+      throw ApiError.badRequest(`Incorrect password`)
     }
     const userDto = new UserDto(candidate)
     const tokens = TokenService.generateTokens({...userDto})

@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "build": "tsc",
     "start:dev": "cross-env NODE_ENV=dev nodemon index.ts"
@@ -23,10 +23,7 @@
     "mongodb": "^5.0.1",
     "mongoose": "^6.9.2",
     "nodemailer": "^6.9.1",
-    "pg": "^8.9.0",
-    "pg-hstore": "^2.3.4",
     "reflect-metadata": "^0.1.13",
-    "sequelize": "^6.28.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
